@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+
+<style type="text/css">
+.minus {
+    border:1px solid red;
+}
+</style>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+        $(document).on("change", ".all:not('.minus')", function (e) {
+    $(':checkbox').prop("checked", $(this).is(":checked"));
+});
+
+$(document).on("change", ".all.minus", function (e) {
+    $(':checkbox').prop("checked", false);
+    $(".all").removeClass("minus");
+});
+$(document).on("change", ":checkbox:not('.all')", function (e) {
+    if ($(':checkbox').not(".all").length == $(':checkbox:checked').not(".all").length) {
+        $(".all").prop("checked", true).removeClass("minus");
+    } else {
+        $(".all").prop("checked", false).addClass("minus");
+        if ($(':checkbox:checked').not(".all").length == 0) {
+            $(".all").removeClass("minus");
+        }
+    }
+});
+    });
+</script>
+
+</head>
+<body>
+
+
+
+
+	<input type="checkbox" class="all" value="all">Check all
+<br/>
+<input type="checkbox" value="1">
+<br/>
+<input type="checkbox" value="2">
+<br/>
+<input type="checkbox" value="3">
+<br/>
+<input type="checkbox" value="4">
+<br/>
+<input type="checkbox" value="5">
+<br/>
+<input type="checkbox" value="6">
+<br/>
+<input type="checkbox" value="7">
+<br/>
+<input type="checkbox" value="8">
+
+
+
+
+</body>
+</html>
